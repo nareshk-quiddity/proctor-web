@@ -1,0 +1,314 @@
+.interview-results-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.results-header {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.candidate-info h2 {
+    margin: 0 0 0.5rem 0;
+    color: #1e293b;
+}
+
+.candidate-info p {
+    margin: 0.25rem 0;
+    color: #64748b;
+}
+
+.job-title {
+    color: #475569;
+    font-weight: 500;
+}
+
+.overall-score {
+    text-align: center;
+    padding: 1.5rem;
+    border-radius: 12px;
+    min-width: 150px;
+}
+
+.overall-score.high {
+    background: #dcfce7;
+}
+
+.overall-score.medium {
+    background: #fef3c7;
+}
+
+.overall-score.low {
+    background: #fee2e2;
+}
+
+.score-label {
+    font-size: 0.875rem;
+    color: #64748b;
+    margin-bottom: 0.5rem;
+}
+
+.score-value {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #1e293b;
+}
+
+.assessment-summary {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.assessment-summary h3 {
+    margin-top: 0;
+    color: #1e293b;
+}
+
+.score-breakdown {
+    margin-bottom: 2rem;
+}
+
+.score-item {
+    display: grid;
+    grid-template-columns: 150px 1fr 60px;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.score-bar {
+    height: 24px;
+    background: #f1f5f9;
+    border-radius: 12px;
+    overflow: hidden;
+    position: relative;
+}
+
+.score-fill {
+    height: 100%;
+    border-radius: 12px;
+    transition: width 0.3s ease;
+}
+
+.score-fill.high {
+    background: #10b981;
+}
+
+.score-fill.medium {
+    background: #f59e0b;
+}
+
+.score-fill.low {
+    background: #ef4444;
+}
+
+.assessment-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.detail-section {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.detail-section h4 {
+    margin-top: 0;
+    color: #475569;
+    font-size: 1rem;
+}
+
+.detail-section ul {
+    margin: 0;
+    padding-left: 1.5rem;
+}
+
+.detail-section li {
+    margin-bottom: 0.5rem;
+    color: #64748b;
+}
+
+.strength-item {
+    color: #166534;
+}
+
+.concern-item {
+    color: #991b1b;
+}
+
+.recommendation-section {
+    grid-column: 1 / -1;
+    text-align: center;
+}
+
+.recommendation {
+    display: inline-block;
+    padding: 0.75rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 1rem 0;
+}
+
+.recommendation.strong-yes {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.recommendation.yes {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.recommendation.maybe {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.recommendation.no {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.confidence {
+    color: #94a3b8;
+    font-size: 0.9rem;
+}
+
+.questions-section {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.questions-section h3 {
+    margin-top: 0;
+    color: #1e293b;
+}
+
+.question-result {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.question-header {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.question-number {
+    background: var(--primary-color);
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.question-type {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    text-transform: capitalize;
+}
+
+.question-score {
+    margin-left: auto;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+}
+
+.question-score.high {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.question-score.medium {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.question-score.low {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.question-text {
+    color: #1e293b;
+    font-weight: 500;
+    margin-bottom: 1rem;
+}
+
+.answer-section {
+    background: #f8fafc;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.answer-section h5 {
+    margin: 0 0 0.5rem 0;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+.answer-text {
+    margin: 0;
+    color: #1e293b;
+    white-space: pre-wrap;
+}
+
+.analysis-section {
+    background: #fffbeb;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.analysis-item {
+    margin-bottom: 1rem;
+}
+
+.analysis-item:last-child {
+    margin-bottom: 0;
+}
+
+.analysis-item strong {
+    color: #475569;
+}
+
+.analysis-item ul {
+    margin: 0.5rem 0 0 0;
+    padding-left: 1.5rem;
+}
+
+.analysis-item li {
+    color: #64748b;
+    margin-bottom: 0.25rem;
+}
+
+.time-spent {
+    color: #94a3b8;
+    font-size: 0.875rem;
+    margin: 0;
+}

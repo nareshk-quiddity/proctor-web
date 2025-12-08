@@ -1,0 +1,184 @@
+.resume-list-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.resume-list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-upload,
+.btn-bulk {
+    background: var(--primary-color);
+    color: blue;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.btn-bulk {
+    background: #10b981;
+}
+
+.btn-upload:hover,
+.btn-bulk:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.filters-section {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.search-input,
+.status-select {
+    padding: 0.75rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-input {
+    flex: 1;
+}
+
+.resumes-table {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.resumes-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.resumes-table th {
+    background: #f8fafc;
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #475569;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.resumes-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.skills-preview {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.skill-tag {
+    background: #f1f5f9;
+    color: #475569;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.8rem;
+}
+
+.more-skills {
+    color: #64748b;
+    font-size: 0.8rem;
+}
+
+.status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.status-badge.new {
+    background: #dbeafe;
+    color: #1e40af;
+}
+
+.status-badge.screening {
+    background: #fef3c7;
+    color: #92400e;
+}
+
+.status-badge.matched {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.status-badge.interviewing {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.status-badge.shortlisted {
+    background: #ddd6fe;
+    color: #5b21b6;
+}
+
+.status-badge.rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.status-badge.hired {
+    background: #d1fae5;
+    color: #065f46;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-view {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+    padding: 6px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-view:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-delete {
+    background: none;
+    border: 1px solid #ef4444;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 5px 12px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.btn-delete:hover {
+    background: #ef4444;
+    color: white;
+}

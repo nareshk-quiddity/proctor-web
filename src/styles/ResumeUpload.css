@@ -1,0 +1,144 @@
+.resume-upload-container {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 2rem;
+}
+
+.upload-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.upload-card h2 {
+    margin-top: 0;
+    color: #2563eb;
+    margin-bottom: 1.5rem;
+}
+
+.upload-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+/* Floating Label Styles for Text Inputs */
+.form-group:not(.file-upload) label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: white;
+    padding: 0 0.5rem;
+    margin: 0;
+    z-index: 10;
+}
+
+.form-group:not(.file-upload) input:focus+label,
+.form-group:not(.file-upload) input:not(:placeholder-shown)+label {
+    top: 0;
+    font-size: 0.8rem;
+    color: #2563eb;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    background: white;
+    box-sizing: border-box;
+    color: #1e293b;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-group input::placeholder {
+    color: transparent;
+}
+
+/* File Upload Specific Styles */
+.file-upload {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0.5rem;
+}
+
+.file-upload label {
+    margin-bottom: 0.5rem;
+    color: #475569;
+    font-weight: 500;
+    position: static;
+    transform: none;
+    pointer-events: auto;
+}
+
+.file-upload input[type="file"] {
+    padding: 0.5rem;
+    border: 1px solid #e2e8f0;
+}
+
+.file-name {
+    margin-top: 0.5rem;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.submit-btn {
+    background: #2563eb;
+    color: white;
+    padding: 0.875rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    margin-top: 1rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+    background: #1d4ed8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    background: #93c5fd;
+}
+
+.error-message {
+    background: #fee2e2;
+    color: #991b1b;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
+
+.success-message {
+    background: #dcfce7;
+    color: #166534;
+    padding: 0.75rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+}
