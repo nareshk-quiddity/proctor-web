@@ -8,6 +8,20 @@ import RecruiterDashboard from './pages/RecruiterDashboard';
 import CreateUser from './pages/CreateUser';
 import UserList from './pages/UserList';
 import { useAuth } from './context/AuthContext';
+import JobList from './pages/JobList';
+import JobDetail from './pages/JobDetail';
+import ResumeList from './pages/ResumeList';
+import ResumeUpload from './pages/ResumeUpload';
+import BulkUpload from './pages/BulkUpload';
+import MatchReview from './pages/MatchReview';
+import MatchingConfig from './pages/MatchingConfig';
+import InterviewBot from './pages/InterviewBot';
+import InterviewResults from './pages/InterviewResults';
+import ForgotPassword from './pages/ForgotPassword';
+import ResetPassword from './pages/ResetPassword';
+import CandidateDashboard from './pages/CandidateDashboard';
+import SuperAdminDashboard from './pages/SuperAdminDashboard';
+import CreateOrganization from './pages/CreateOrganization';
 
 interface ProtectedRouteProps {
     children: ReactNode;
@@ -25,26 +39,20 @@ const ProtectedRoute = ({ children, adminOnly = false }: ProtectedRouteProps) =>
     const effectiveUser = user || (token && role && userId ? { token, role, userId } : null);
 
     if (loading && !effectiveUser) return <div>Loading...</div>;
+
     if (!effectiveUser) return <Navigate to="/login" />;
-    if (adminOnly && !['super_admin', 'customer_admin'].includes(effectiveUser.role || '')) return <Navigate to="/dashboard" />;
+
+    if (adminOnly) {
+        const userRole = effectiveUser.role?.trim() || '';
+        if (!['super_admin', 'customer_admin'].includes(userRole)) {
+            return <Navigate to="/dashboard" />;
+        }
+    }
 
     return <>{children}</>;
 };
 
-import JobList from './pages/JobList';
-import JobDetail from './pages/JobDetail';
-import ResumeList from './pages/ResumeList';
-import ResumeUpload from './pages/ResumeUpload';
-import BulkUpload from './pages/BulkUpload';
-import MatchReview from './pages/MatchReview';
-import MatchingConfig from './pages/MatchingConfig';
-import InterviewBot from './pages/InterviewBot';
-import InterviewResults from './pages/InterviewResults';
-import ForgotPassword from './pages/ForgotPassword';
-import ResetPassword from './pages/ResetPassword';
-import CandidateDashboard from './pages/CandidateDashboard';
-import SuperAdminDashboard from './pages/SuperAdminDashboard';
-import CreateOrganization from './pages/CreateOrganization';
+
 
 function App() {
     return (

@@ -150,7 +150,7 @@ const ResumeList = () => {
                                             <div className="actions">
                                                 {resume.resumeFile?.fileUrl && (
                                                     <a
-                                                        href={`http://localhost:5000${resume.resumeFile.fileUrl}`}
+                                                        href={`http://localhost:5002${resume.resumeFile.fileUrl}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="btn-view"

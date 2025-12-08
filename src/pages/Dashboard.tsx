@@ -3,13 +3,33 @@ import { Link } from 'react-router-dom';
 // import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import '../styles/AdminDashboard.css';
+import groupIcon from '../assets/group.png';
+import userIcon from '../assets/user.png';
 
 interface DashboardStats {
-    // ... existing types
+    users: {
+        total: number;
+        active: number;
+        recruiters: {
+            total: number;
+            active: number;
+            inactive: number;
+        };
+        candidates: {
+            total: number;
+            active: number;
+            inactive: number;
+        };
+    };
 }
 
 interface User {
-    // ... existing types
+    _id: string;
+    username: string;
+    email: string;
+    role: string;
+    status: string;
+    createdAt: string;
 }
 
 const Dashboard = () => {
@@ -113,22 +133,30 @@ const Dashboard = () => {
             {/* Stats Grid */}
             <div className="stats-grid">
                 <div className="stat-card primary">
-                    <div className="icon">👥</div>
+                    <div className="icon">
+                        <img src={groupIcon} alt="Total Users" className="stat-icon-img" />
+                    </div>
                     <div className="value">{stats?.users.total || 0}</div>
                     <div className="label">Total Users</div>
                 </div>
                 <div className="stat-card success">
-                    <div className="icon">👔</div>
+                    <div className="icon">
+                        <img src={userIcon} alt="Active Recruiters" className="stat-icon-img" />
+                    </div>
                     <div className="value">{stats?.users.recruiters.active || 0}</div>
                     <div className="label">Active Recruiters</div>
                 </div>
                 <div className="stat-card warning">
-                    <div className="icon">⏸️</div>
+                    <div className="icon">
+                        <img src={userIcon} alt="Inactive Recruiters" className="stat-icon-img" />
+                    </div>
                     <div className="value">{stats?.users.recruiters.inactive || 0}</div>
                     <div className="label">Inactive Recruiters</div>
                 </div>
                 <div className="stat-card info">
-                    <div className="icon">🎓</div>
+                    <div className="icon">
+                        <img src={groupIcon} alt="Total Candidates" className="stat-icon-img" />
+                    </div>
                     <div className="value">{stats?.users.candidates.total || 0}</div>
                     <div className="label">Total Candidates</div>
                 </div>
@@ -149,7 +177,7 @@ const Dashboard = () => {
                                 className="bar"
                                 style={{
                                     height: `${(stats?.users.recruiters.total || 0) * 10}px`,
-                                    background: '#4f46e5'
+                                    background: '#6259ca'
                                 }}
                             >
                                 <span className="bar-value">{stats?.users.recruiters.total}</span>
@@ -161,7 +189,7 @@ const Dashboard = () => {
                                 className="bar"
                                 style={{
                                     height: `${(stats?.users.candidates.total || 0) * 10}px`,
-                                    background: '#3b82f6'
+                                    background: '#09ad95'
                                 }}
                             >
                                 <span className="bar-value">{stats?.users.candidates.total}</span>

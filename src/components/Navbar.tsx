@@ -30,7 +30,10 @@ const Navbar = () => {
                     </>
                 )}
                 {user?.role === 'customer_admin' && (
-                    <Link to="/admin/users" style={{ color: 'white', marginRight: '1rem', textDecoration: 'none' }}>Manage Users</Link>
+                    <>
+                        <Link to="/customer-admin/dashboard" style={{ color: 'white', marginRight: '1rem', textDecoration: 'none', fontWeight: 'bold' }}>Dashboard</Link>
+                        <Link to="/admin/users" style={{ color: 'white', marginRight: '1rem', textDecoration: 'none' }}>Manage Users</Link>
+                    </>
                 )}
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>

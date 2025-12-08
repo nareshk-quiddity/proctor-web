@@ -2,7 +2,7 @@ import { useState, FormEvent } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Auth.css';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const API_URL = (import.meta as unknown as { env: Record<string, string> }).env.VITE_API_URL || 'http://localhost:5002/api';
 
 const ForgotPassword = () => {
     const [email, setEmail] = useState('');

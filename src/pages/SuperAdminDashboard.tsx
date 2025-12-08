@@ -7,7 +7,7 @@ import listIcon from '../assets/list.png';
 import activeOrgIcon from '../assets/menu-button.png';
 import inactiveOrgIcon from '../assets/menu.png';
 
-const API_URL = (import.meta as unknown as { env: Record<string, string> }).env.VITE_API_URL || 'http://localhost:5003/api';
+const API_URL = (import.meta as unknown as { env: Record<string, string> }).env.VITE_API_URL || 'http://localhost:5002/api';
 
 interface Organization {
     _id: string;
