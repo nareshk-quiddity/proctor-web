@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 import '../styles/AdminDashboard.css';
@@ -37,6 +37,7 @@ const Dashboard = () => {
     const [recentUsers, setRecentUsers] = useState<User[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchDashboardData();
@@ -53,7 +54,11 @@ const Dashboard = () => {
             ]);
 
             setStats(analyticsRes.data);
-            setRecentUsers(usersRes.data.users || usersRes.data);
+            const allUsers = usersRes.data.users || usersRes.data;
+            const filteredUsers = allUsers.filter((user: User) =>
+                ['recruiter', 'candidate'].includes(user.role.toLowerCase())
+            );
+            setRecentUsers(filteredUsers);
         } catch (err) {
             console.error('Error fetching dashboard data:', err);
             setError('Failed to load dashboard data');
@@ -89,6 +94,38 @@ const Dashboard = () => {
         } catch (err) {
             console.error('Error updating user status:', err);
             alert('Failed to update status');
+        }
+    };
+
+    const handleViewUser = async (userId: string, role: string) => {
+        if (!window.confirm(`Are you sure you want to login as this ${role}? You will be logged out of your admin account.`)) return;
+
+        try {
+            const token = localStorage.getItem('token');
+            const res = await axios.post(`/api/admin/impersonate/${userId}`, {}, {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+
+            // Update local storage with new user credentials
+            const { token: newToken, user } = res.data;
+            localStorage.setItem('token', newToken);
+            localStorage.setItem('role', user.role);
+            localStorage.setItem('userId', user._id);
+            if (user.organizationId) {
+                localStorage.setItem('organizationId', user.organizationId);
+            }
+
+            // Redirect based on role
+            if (role === 'recruiter') {
+                window.location.href = '/recruiter-dashboard';
+            } else if (role === 'candidate') {
+                window.location.href = '/candidate-dashboard';
+            } else {
+                window.location.href = '/dashboard';
+            }
+        } catch (err: any) {
+            console.error('Impersonation failed:', err);
+            alert(err.response?.data?.message || 'Failed to login as user');
         }
     };
 
@@ -217,6 +254,7 @@ const Dashboard = () => {
                                     <th>Role</th>
                                     <th>Status</th>
                                     <th>Date Joined</th>
+                                    <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -257,6 +295,15 @@ const Dashboard = () => {
                                                     🗑️
                                                 </button>
                                             </div>
+                                        </td>
+                                        <td>
+                                            <button
+                                                className="btn-primary"
+                                                style={{ padding: '0.2rem 0.6rem', fontSize: '0.8rem' }}
+                                                onClick={() => handleViewUser(user._id, user.role)}
+                                            >
+                                                View
+                                            </button>
                                         </td>
                                     </tr>
                                 ))}

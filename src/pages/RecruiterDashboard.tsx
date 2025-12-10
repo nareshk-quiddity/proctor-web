@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import { BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import '../styles/Dashboard.css';
@@ -28,6 +29,7 @@ const RecruiterDashboard = () => {
     const [analytics, setAnalytics] = useState<Analytics | null>(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState('');
+    const location = useLocation();
 
     useEffect(() => {
         fetchAnalytics();
@@ -36,7 +38,12 @@ const RecruiterDashboard = () => {
     const fetchAnalytics = async () => {
         try {
             const token = localStorage.getItem('token');
-            const res = await axios.get('/api/analytics', {
+            const searchParams = new URLSearchParams(location.search);
+            const userId = searchParams.get('userId');
+
+            const url = userId ? `/api/analytics?userId=${userId}` : '/api/analytics';
+
+            const res = await axios.get(url, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setAnalytics(res.data);

@@ -21,26 +21,7 @@ const Login = () => {
         setLoading(false);
 
         if (res.success) {
-            // Get user role from localStorage (set by login function)
-            const role = localStorage.getItem('role');
-
-            // Redirect based on role
-            switch (role) {
-                case 'super_admin':
-                    navigate('/super-admin/dashboard');
-                    break;
-                case 'customer_admin':
-                    navigate('/customer-admin/dashboard');
-                    break;
-                case 'recruiter':
-                    navigate('/recruiter-dashboard');
-                    break;
-                case 'candidate':
-                    navigate('/candidate-dashboard');
-                    break;
-                default:
-                    navigate('/dashboard');
-            }
+            navigate('/home');
         } else {
             setError(res.message || 'Login failed');
         }
