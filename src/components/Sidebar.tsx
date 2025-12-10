@@ -10,7 +10,12 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
     const location = useLocation();
     const isActive = (path: string) => location.pathname === path;
 
-    const role = localStorage.getItem('role');
+    const role = localStorage.getItem('role'); // e.g. 'super_admin', 'customer_admin', 'recruiter'
+
+    // Visibility Flags
+    const showManageUsers = ['super_admin', 'customer_admin'].includes(role || '');
+    const showJobsResumes = role === 'recruiter';
+    const showAddOrg = role === 'super_admin';
 
     const getDashboardPath = () => {
         switch (role) {
@@ -36,10 +41,25 @@ const Sidebar = ({ isOpen }: SidebarProps) => {
                 <Link to={dashboardPath} className={`nav-item ${isActive(dashboardPath) ? 'active' : ''}`}>
                     <span className="icon">📊</span> Dashboard
                 </Link>
-                <Link to="/admin/users" className={`nav-item ${isActive('/admin/users') ? 'active' : ''}`}>
-                    <span className="icon">👥</span> Manage Users
-                </Link>
-                {role === 'super_admin' && (
+
+                {showManageUsers && (
+                    <Link to="/admin/users" className={`nav-item ${isActive('/admin/users') ? 'active' : ''}`}>
+                        <span className="icon">👥</span> Manage Users
+                    </Link>
+                )}
+
+                {showJobsResumes && (
+                    <>
+                        <Link to="/jobs" className={`nav-item ${isActive('/jobs') ? 'active' : ''}`}>
+                            <span className="icon">💼</span> Jobs
+                        </Link>
+                        <Link to="/resumes" className={`nav-item ${isActive('/resumes') ? 'active' : ''}`}>
+                            <span className="icon">📄</span> Resumes
+                        </Link>
+                    </>
+                )}
+
+                {showAddOrg && (
                     <Link to="/admin/organizations/create" className={`nav-item ${isActive('/admin/organizations/create') ? 'active' : ''}`}>
                         <span className="icon">🏢</span> Add Org
                     </Link>
